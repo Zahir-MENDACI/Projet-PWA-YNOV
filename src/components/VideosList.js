@@ -34,3 +34,9 @@ const VideosList = () => {
 };
 
 export default VideosList;
+
+
+// <video width="720" height="405" controls  poster="http://www.supportduweb.com/page/media/videoTag/BigBuckBunny.png">
+// <source src="D:\Nouveau dossier (2)\Nouveau dossier (9)" type="video/mp4"/>
+
+// </video>
