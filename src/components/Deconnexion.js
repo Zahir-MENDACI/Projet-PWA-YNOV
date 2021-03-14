@@ -1,6 +1,7 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
+import Logout from '../Logout.svg'
 
 const Deconnexion = () =>
 {
@@ -17,15 +18,15 @@ const Deconnexion = () =>
         <div>
             {
                 token ? (
-                    <Button onClick={clic}>Deconnexion</Button>
+                    <StyledLogoutIcon src={Logout} onClick={clic}/>
                 ) : null
             }
         </div>
     );
 };
 
-const Button = styled.button`
-
+const StyledLogoutIcon = styled.img`
+    width: 20px;
 `
 
 export default Deconnexion;

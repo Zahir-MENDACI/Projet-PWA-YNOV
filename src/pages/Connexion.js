@@ -43,6 +43,7 @@ const Connexion = ({history}) => {
 
     }, [])
     return (
+        <StyledBody>
             <StyledDiv>
                 <StyledLogo>
                     <StyledImg src={Logo}/>
@@ -51,6 +52,8 @@ const Connexion = ({history}) => {
                 <LoginForm submit={submit}></LoginForm>
                 {/* <Link to='/caracteres'> Aller à Caracteres </Link> */}
             </StyledDiv>
+        </StyledBody>
+
     )
 }
 
@@ -77,6 +80,15 @@ const StyledTitle = styled.p`
     font-size: 2em;
     margin-left: 20px
 
+`
+
+const StyledBody = styled.body`
+    background-color: #000;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 `
 
 export default Connexion

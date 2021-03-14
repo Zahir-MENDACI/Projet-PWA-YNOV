@@ -9,7 +9,7 @@ const LoginForm = ({submit}) => {
     const [formState, setFormState] = useState({username: '', password: ''})
     const [errorMessage, setErrorMessage] = useState('')
     const history = useHistory()
-
+    console.log(formState)
     return (
             <StyledForm onSubmit={e => submit(e, formState, setErrorMessage, history)}>
                 <StyledLabel>Identifiant</StyledLabel>

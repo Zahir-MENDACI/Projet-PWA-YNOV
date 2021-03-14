@@ -3,38 +3,56 @@ import React from 'react';
 const data = [
     {
         id: 1,
-        nom: "Video 1",
+        titre: "azertyuiopazertyui",
         url: "../video/AnimationLogo.mp4",
+        user: "User A",
+        game: "League of Legends",
+        langue: "Français",
         commentaires:[]
     },
     {
         id: 2,
-        nom: "Video 2",
+        titre: "azertyuiopazertyui",
         url: "../video/AnimationLogo.mp4",
+        user: "User A",
+        game: "GTA V",
+        langue: "Français",
         commentaires:[]
     },
     {
         id: 3,
-        nom: "Video 3",
+        titre: "azertyuiopazertyui",
         url: "../video/AnimationLogo.mp4",
+        user: "User A",
+        game: "Apex Legends",
+        langue: "Français",
         commentaires:[]
     },
     {
         id: 4,
-        nom: "Video 4",
+        titre: "azertyuiopazertyui",
         url: "../video/AnimationLogo.mp4",
+        user: "User A",
+        game: "Minecraft",
+        langue: "Français",
         commentaires:[]
     },
     {
         id: 5,
-        nom: "Video 5",
+        titre: "azertyuiopazertyui",
         url: "../video/AnimationLogo.mp4",
+        user: "User A",
+        game: "Fortnite",
+        langue: "Français",
         commentaires:[]
     },
     {
         id: 6,
-        nom: "Video 6",
+        titre: "azertyuiopazertyui",
         url: "../video/AnimationLogo.mp4",
+        user: "User A",
+        game: "CS Global Offensive",
+        langue: "Français",
         commentaires:[]
     },
     

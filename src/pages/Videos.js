@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
 import VideosList from '../components/VideosList';
 
 const Videos = () => {
@@ -6,9 +7,7 @@ const Videos = () => {
 
     return (
         <div>
-            <h1>Videos</h1>
             <VideosList></VideosList>
-
         </div>
     );
 };

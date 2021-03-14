@@ -14,9 +14,11 @@ function App() {
 }
 
 const StyledBody = styled.body`
-    background-color: #FFF;
+    background-color: #0E0E10;
     min-height: 100vh;
+    width: 100vw;
     display: flex;
+    /* flex-direction: column; */
     align-content: center;
     justify-content: center;
 `
