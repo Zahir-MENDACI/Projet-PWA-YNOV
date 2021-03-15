@@ -1,8 +1,7 @@
 import React from 'react';
-import Logo from '../TwitchGlitchPurple.svg'
-import Tab from '../Tab.svg'
-import Loupe from '../Loupe.svg'
-import Logout from '../Logout.svg'
+import Logo from '../svg/TwitchGlitchPurple.svg'
+import Tab from '../svg/Tab.svg'
+import Loupe from '../svg/Loupe.svg'
 import styled from 'styled-components'
 import Deconnexion from './Deconnexion';
 

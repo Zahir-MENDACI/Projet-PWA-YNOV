@@ -1,6 +1,5 @@
 import React from 'react';
 import VideoDetails from '../components/VideoDetails';
-import data from '../data/data'
 
 const Details = (props) => {
     console.log(props.match.params.id)

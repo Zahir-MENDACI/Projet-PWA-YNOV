@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
-import { Link } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 import axios from 'axios'
-import Logo from '../TwitchGlitchPurple.svg'
+import Logo from '../svg/TwitchGlitchPurple.svg'
 import styled from 'styled-components'
 
 
@@ -68,7 +67,7 @@ const StyledDiv = styled.div`
 `
 const StyledImg = styled.img`
     width: 50px;
-    
+    margin-left: 20px
 `
 
 const StyledLogo = styled.div`

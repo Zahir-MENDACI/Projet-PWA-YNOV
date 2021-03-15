@@ -3,7 +3,7 @@ import React from 'react';
 const data = [
     {
         id: 1,
-        titre: "azertyuiopazertyui",
+        titre: "Live League of Legends",
         url: "../video/AnimationLogo.mp4",
         user: "User A",
         game: "League of Legends",
@@ -12,45 +12,45 @@ const data = [
     },
     {
         id: 2,
-        titre: "azertyuiopazertyui",
+        titre: "Live Grand Theft Auto V",
         url: "../video/AnimationLogo.mp4",
-        user: "User A",
+        user: "User B",
         game: "GTA V",
         langue: "Français",
         commentaires:[]
     },
     {
         id: 3,
-        titre: "azertyuiopazertyui",
+        titre: "Live Apex Legends",
         url: "../video/AnimationLogo.mp4",
-        user: "User A",
+        user: "User C",
         game: "Apex Legends",
         langue: "Français",
         commentaires:[]
     },
     {
         id: 4,
-        titre: "azertyuiopazertyui",
+        titre: "Live Minecraft",
         url: "../video/AnimationLogo.mp4",
-        user: "User A",
+        user: "User D",
         game: "Minecraft",
         langue: "Français",
         commentaires:[]
     },
     {
         id: 5,
-        titre: "azertyuiopazertyui",
+        titre: "Live Fortnite",
         url: "../video/AnimationLogo.mp4",
-        user: "User A",
+        user: "User E",
         game: "Fortnite",
         langue: "Français",
         commentaires:[]
     },
     {
         id: 6,
-        titre: "azertyuiopazertyui",
+        titre: "Live CS Globale Offensive",
         url: "../video/AnimationLogo.mp4",
-        user: "User A",
+        user: "User F",
         game: "CS Global Offensive",
         langue: "Français",
         commentaires:[]

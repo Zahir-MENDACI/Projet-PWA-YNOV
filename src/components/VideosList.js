@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import data from '../data/data'
 import { Link } from "react-router-dom";
-import VideoDetails from './VideoDetails';
-import Video from '../video/AnimationLogo.mp4'
 import styled from 'styled-components'
-import Logo from '../gamer.svg'
+import Logo from '../svg/gamer.svg'
+import Refresh from '../svg/Refresh.svg'
 import Navbar from './Navbar';
-
-// import Apex from '../images/Apex Legends.jpg'
 
 const VideosList = () => {
 
-    const [datas, setDatas] = useState(data)
+    const [datas, setDatas] = useState(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : [])
 
-    // localStorage.setItem('data', JSON.stringify(datas))
-
-    console.log(datas[0].nom)
-
-    const video = datas.map((data) => 
+    const setDataToLocalStorage = () =>
     {
+        localStorage.setItem('data', JSON.stringify(data))
+        setDatas(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : [])
+    }
+
+    const video = datas[0] ? datas.map((data) => 
+    {
+        // lien de recuperation de la video à afficher
         let url = `/videos/${data.id}`
+        // lien de recuperation des images à afficher en aperçu sur la liste des videos
         let img = `/images/${data.game}.jpg`
         return(
             <>
@@ -39,7 +40,13 @@ const VideosList = () => {
                 </StyledCard>
             </>
         )
-    })
+    }) : <StyledNoDatas>
+            {/* les données à utiliser seront importées du localStorage, 
+            donc s'il n'y a pas de données dans le localStorage, 
+            on fait appel à la fonction setDataToLocalStorage */}
+            <StyledTitle>Pas de donnees disponibles</StyledTitle>
+            <StyledRefresh src={Refresh} onClick={setDataToLocalStorage}/>
+        </StyledNoDatas>
 
     return (
         <>
@@ -132,6 +139,15 @@ const StyledLangue = styled.p`
     {
         color: #9147FF
     }
+`
+const StyledNoDatas = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+const StyledRefresh = styled.img`
+    width: 50px;
+    margin: auto;
 `
 
 export default VideosList;

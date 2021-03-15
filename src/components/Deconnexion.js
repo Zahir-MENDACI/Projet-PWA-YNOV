@@ -1,7 +1,7 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
-import Logout from '../Logout.svg'
+import Logout from '../svg/Logout.svg'
 
 const Deconnexion = () =>
 {

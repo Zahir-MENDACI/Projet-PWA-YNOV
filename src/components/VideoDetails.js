@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-// import data from '../data/data'
+import React, { useState } from 'react';
 import Video from '../video/AnimationLogo.mp4'
-import Logo from '../gamer.svg'
+import Logo from '../svg/gamer.svg'
 import styled from 'styled-components'
 import Navbar from './Navbar';
 
@@ -9,93 +8,73 @@ const VideoDetails = (props) => {
     console.log(props)
     const [datas, setDatas] = useState(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : [])
     const [inputValue, setInputValue] = useState('')
-    console.log(datas)
 
-    console.log(localStorage.getItem('data'))
 
-    console.log(datas[0].commentaires.length)
-
-    // console.log(datas[0].commentaires.slice(-1)[0].id)
-
+    // Fonction qui ajoute les commentaires
     const clic = () =>
     {
-        // datas.filter((d) => d.id == props.id)[0].commentaires.push({id: 3, value: "eeeeee"})
-        // console.log(datas.filter((d) => d.id == props.id))
-        
-        //localStorage.setItem('data', JSON.stringify(datas.filter((d) => d.id == props.id)[0].commentaires.push({id: 3, value: "eeeeee"})))
+        // Tester si le champs de texte du commentaire est rempli ou vide
+        if (inputValue !== '' )
+        {
+            // Recuperer les données de la video selectionnée
+            const temp = datas.filter((d) => d.id === Number(props.id))[0]
+            // Ajout du commentaire dans la collection
+            const newitem = {
+                ...temp, 
+                commentaires: [
+                    ...temp?.commentaires,
+                    {
+                        id: temp.commentaires[0] ? temp.commentaires.slice(-1)[0]?.id + 1 : 1, 
+                        value: inputValue,
+                        // date: new Date().toLocaleDateString(),
+                        // heure: new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"})
+                    }
+                ]
+            }
 
-
-        const temp = datas.filter((d) => d.id === Number(props.id))[0]
-        // console.log(temp)
-        const newitem = {
-            ...temp, 
-            commentaires: [
-                ...temp?.commentaires,
-                {
-                    id: temp.commentaires.slice(-1)[0]?.id + 1, 
-                    value: inputValue,
-                    date: new Date().toLocaleDateString(),
-                    heure: new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"})
-                }
-            ]
+            // Recuperation de l'index de la collection de la video selectionnée
+            const index = datas.map(data => data.id).indexOf(Number(props.id))
+            const tempdata = datas
+            // remplacer l'element present sur l'index recuperé par le newitem
+            tempdata.splice(index, 1, newitem)
+            localStorage.setItem('data', JSON.stringify(tempdata))
+            // Màj de la state par les nouvelles données
+            setDatas(tempdata)
+            setInputValue('')
+        } 
+        else
+        {
+            alert('Champs vide')
         }
-        // console.log(newitem)
-
-        const index = datas.map(data => data.id).indexOf(Number(props.id))
-        // console.log(index)
-
-        const tempdata = datas
-        tempdata.splice(index, 1, newitem)
-        localStorage.setItem('data', JSON.stringify(tempdata))
-
-        setDatas(tempdata)
-        
-        setInputValue('')
     }
 
-    const supprimer = id =>
-    {
-        const temp = datas.filter((d) => d.id === Number(props.id))[0]
-        // console.log(temp)
-        const newitem = {
-            ...temp, 
-            commentaires: [
-                ...temp.commentaires.filter(com => com.id !== id),
-            ]
-        }
-        // console.log(newitem)
+    // const supprimer = id =>
+    // {
+    //     const temp = datas.filter((d) => d.id === Number(props.id))[0]
+    //     // console.log(temp)
+    //     const newitem = {
+    //         ...temp, 
+    //         commentaires: [
+    //             ...temp.commentaires.filter(com => com.id !== id),
+    //         ]
+    //     }
 
-        const index = datas.map(data => data.id).indexOf(Number(props.id))
-        // console.log(index)
+    //     const index = datas.map(data => data.id).indexOf(Number(props.id))
 
-        const tempdata = datas
-        tempdata.splice(index, 1, newitem)
-        localStorage.setItem('data', JSON.stringify(tempdata))
+    //     const tempdata = datas
+    //     tempdata.splice(index, 1, newitem)
+    //     localStorage.setItem('data', JSON.stringify(tempdata))
 
-        setDatas(tempdata)
-        setInputValue('')
+    //     setDatas(tempdata)
+    //     setInputValue('')
         
-    }
-
-    const videoRef   = useRef(null);
-
-    useEffect ( () => {
-        
-        if(videoRef.current){
-            
-            let videoHeight = videoRef.current.offsetHeight;
-            console.log(videoHeight)
-        }
-        
-    }, [videoRef]);
-
-
+    // }
 
     return (
         <>
             <Navbar/>
             <StyledBody>
-                <StyledVideo controls  src={Video} type="video/mp4" ref = { videoRef }/>
+                <StyledVideo controls  src={Video} type="video/mp4"/>
                 {
                     datas.filter((d) => d.id == props.id).map((d) => 
                     {
@@ -121,17 +100,23 @@ const VideoDetails = (props) => {
                                         d.commentaires?.map((com) =>
                                         {
                                             return (
-                                                
-                                                    <StyledLi>
-                                                        <StyledUser>
-                                                            user {Math.floor(Math.random() * 100)}&ensp;:  
-                                                        </StyledUser>
-
-                                                        <p>{com.value}</p>
-    
-                                                        {/* <button onClick={() => supprimer(com.id)}>Supprimer</button> */}
-                                                    </StyledLi>
-                                                
+                                                <StyledLi>
+                                                    <StyledUser color={() => 
+                                                    {
+                                                        // Generation d'une couleur aléatoire
+                                                        const letters = '0123456789ABCDEF';
+                                                        let color = '#';
+                                                        for (let i = 0; i < 6; i++) {
+                                                            color += letters[Math.floor(Math.random() * 16)];
+                                                        }
+                                                        return color;
+                                                    }}>
+                                                        {/* Generation d'un nombre aléatoire */}
+                                                        user {Math.floor(Math.random() * 100)}&ensp;:  
+                                                    </StyledUser>
+                                                    <p>{com.value}</p>
+                                                    {/* <button onClick={() => supprimer(com.id)}>Supprimer</button> */}
+                                                </StyledLi>  
                                             )
                                         })
                                     }
@@ -139,7 +124,6 @@ const VideoDetails = (props) => {
                                 </StyledDivli>
                             </div>
                         )
-                
                     })
                 }
                 <StyledDivInput>
@@ -152,7 +136,6 @@ const VideoDetails = (props) => {
                     <StyledDivButton>
                         <StyledButton type="submit" onClick={clic}>Chat</StyledButton>
                     </StyledDivButton>
-                    
                 </StyledDivInput>
             </StyledBody>
         </>
@@ -205,15 +188,7 @@ const StyledP = styled.p`
     color: #9147FF;
 `
 const StyledUser = styled.p`
-    color: ${() => 
-    {
-        const letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }};
+    color: ${props => props.color};
     margin-right: 10px;
 `
 
@@ -249,7 +224,7 @@ const StyledLi = styled.li`
 
 const StyledDivInput = styled.div`
     position: absolute;
-    bottom: 4vh;
+    bottom: 0;
     height: 7vh;
     width: 100vw;
     background-color: #202024;
