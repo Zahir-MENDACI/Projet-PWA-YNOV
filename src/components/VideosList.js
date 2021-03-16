@@ -1,20 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import data from '../data/data'
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
 import Logo from '../svg/gamer.svg'
 import Refresh from '../svg/Refresh.svg'
 import Navbar from './Navbar';
+import axios from 'axios'
 
 const VideosList = () => {
 
     const [datas, setDatas] = useState(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : [])
+    // const [isLoading, setLoading] = useState(true)
 
     const setDataToLocalStorage = () =>
     {
         localStorage.setItem('data', JSON.stringify(data))
         setDatas(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : [])
     }
+
+    // const getDatas = () =>
+    // {
+    //     axios(
+    //         {
+    //             method: 'GET',
+    //             url: localStorage.getItem('data')
+    //         }
+    //     ).then(res => 
+    //     {
+    //         console.log("--------------------")
+    //         setDatas(JSON.parse(localStorage.getItem('data')))
+    //         setLoading(false)
+    //     }).catch(err =>
+    //         {
+    //             console.log(err)
+    //             setLoading(false)
+    //         })
+    // }
+
+    // useEffect(() => 
+    // {
+    //     getDatas()
+    // }, [])
+
+    // if (!isLoading)
+    // {
+    //   return (<p style={{color: "#FFF"}}> Chargement en cours </p>)
+    // }
+    
 
     const video = datas[0] ? datas.map((data) => 
     {
