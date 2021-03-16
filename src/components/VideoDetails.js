@@ -206,7 +206,7 @@ const StyledVideo = styled.video`
 
 const StyledDivli = styled.div`
     overflow-y: hidden;
-    height: 25vh;
+    height: 30vh;
     position: relative;
     overflow-y: hidden;
     line-height: 6px

@@ -19,8 +19,7 @@ const StyledBody = styled.body`
     width: 100vw;
     display: flex;
     /* flex-direction: column; */
-    align-content: center;
-    justify-content: center;
+   
 `
 
 export default App;
